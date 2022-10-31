@@ -5,7 +5,7 @@
    * URL FORMAT - /controller/method/params
    */
   class Core {
-    protected $currentController = 'Pages'; /*if there is no other controller this pages controller is going to get loaded*/
+    protected $currentController = 'Pages';
     protected $currentMethod = 'index';
     protected $params = [];
 
@@ -15,14 +15,15 @@
       $url = $this->getUrl();
 
       // Look in controllers for first value
-      if(isset($url[0])){
-      if(file_exists('../app/controllers/' . ucwords($url[0]). '.php')){
-        // If exists, set as controller
-        $this->currentController = ucwords($url[0]);
-        // Unset 0 Index
-        unset($url[0]);
+      if($url){
+        if(file_exists('../app/controllers/' . ucwords($url[0]). '.php')){
+          // If exists, set as controller
+          $this->currentController = ucwords($url[0]);
+          // Unset 0 Index
+          unset($url[0]);
+        }
       }
-       }
+      
 
       // Require the controller
       require_once '../app/controllers/'. $this->currentController . '.php';
@@ -30,17 +31,16 @@
       // Instantiate controller class
       $this->currentController = new $this->currentController;
 
-    // Check for second part of url
-    if(isset($url[1])){
-    // Check to see if method exists in controller
+      // Check for second part of url
+      if(isset($url[1])){
+        // Check to see if method exists in controller
         if(method_exists($this->currentController, $url[1])){
           $this->currentMethod = $url[1];
           // Unset 1 index
           unset($url[1]);
         }
       }
-      //echoing the current method
-      //echo $this->currentMethod;
+
       // Get params
       $this->params = $url ? array_values($url) : [];
 

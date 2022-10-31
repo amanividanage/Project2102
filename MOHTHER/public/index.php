@@ -1,5 +1,5 @@
-<?php
-require_once '../app/bootstrap.php';# outside the public folder and then into the app folder
+<?php  
+    require_once '../app/bootstrap.php';
 
-//init core library
-$init = new Core;
+    //Init Core Library
+    $init = new Core;

@@ -1,7 +1,14 @@
 <?php
-//App root
-define('APPROOT', dirname(dirname(__FILE__)));
-//URL Root
-define('URLROOT', 'http://localhost/MOHTHER');
-//Site Name
-define('SITENAME', 'MOHTHER');
+    //DB Params
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'root');
+    define('DB_PASS', '');
+    define('DB_NAME', 'm2');
+
+
+    //App Root
+    define('APPROOT', dirname(dirname(__FILE__)));
+    //URL Root
+    define('URLROOT', 'http://localhost/m2/');
+    //Site Name
+    define('SITENAME', 'MOHTHER');
